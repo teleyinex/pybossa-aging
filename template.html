@@ -31,9 +31,9 @@
     <div id="answer">
     <form id="form">
         Age: <input type="text" name="age" id="age"/>
-        <input type="submit" value="Submit age"/>
-        <button class="btn" onclick="getApp('flickraging')">I don't know</button>
+        <input type="submit" class="btn btn-primary" value="Submit age"/>
     </form>
+        <button class="btn" onclick="getApp('flickraging')">I don't know</button>
     </div>
 
   </div>
@@ -140,8 +140,7 @@ function submitTask(answer) {
 $('#form').submit(function() {
     submitTask($('#age').val());
     console.log($('#age').val());
-  alert('Handler for .submit() called.');
-  return false;
+    return false;
 });
 
 getApp("aging");
