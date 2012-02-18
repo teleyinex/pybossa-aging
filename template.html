@@ -29,9 +29,11 @@
       </ul>
     </div>
     <div id="answer">
-      <button class="btn btn-success" onclick="submitTask('Yes')">Yes</button>
-      <button class="btn btn-info" onclick="submitTask('No')">No</button>
-      <button class="btn" onclick="getApp('flickrperson')">I don't know</button>
+    <form id="form">
+        Age: <input type="text" name="age" id="age"/>
+        <input type="submit" value="Submit age"/>
+        <button class="btn" onclick="getApp('flickraging')">I don't know</button>
+    </form>
     </div>
 
   </div>
@@ -97,7 +99,7 @@ function submitTask(answer) {
             task.state = "1"
             // Update the state of the task in the DB
             $.ajax({
-                type: 'PUT',
+                type: 'GET',
                 dataType: 'json',
                 url: url, 
                 data: JSON.stringify(task),
@@ -107,7 +109,7 @@ function submitTask(answer) {
                         'created': task.create_time,
                         'app_id': task.app_id,
                         'task_id': task.id,
-                        'info': {'answer': answer }
+                        'info': {'age': answer }
                         };
 
                         // Convert it to a string
@@ -124,7 +126,7 @@ function submitTask(answer) {
                                         setTimeout(function() {
                                             $("#success").fadeOut();
                                             }, 1000);
-                                        getApp("flickrperson");
+                                        getApp("aging");
                                      }
                         });
 
@@ -135,5 +137,12 @@ function submitTask(answer) {
     });
 }
 
-getApp("flickrperson");
+$('#form').submit(function() {
+    submitTask($('#age').val());
+    console.log($('#age').val());
+  alert('Handler for .submit() called.');
+  return false;
+});
+
+getApp("aging");
 </script>

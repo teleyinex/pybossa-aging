@@ -23,7 +23,7 @@ from optparse import OptionParser
 
 def delete_app(api_url, api_key, id):
     """
-    Deletes the Flickr Person Finder application.
+    Deletes the Aging application.
 
     :arg integer id: The ID of the application
     :returns: True if the application has been deleted
@@ -39,7 +39,7 @@ def delete_app(api_url, api_key, id):
 
 def update_app(api_url , api_key, id, name = None):
     """
-    Updates the name of the Flickr PErson Finder application
+    Updates the name of the Aging application
     
     :arg integer id: The ID of the application
     :arg string name: The new name for the application
@@ -60,7 +60,7 @@ def update_app(api_url , api_key, id, name = None):
 
 def create_app(api_url , api_key, name=None, short_name=None, description=None):
     """
-    Creates the Flickr Person Finder application. 
+    Creates the Aging application. 
 
     :arg string name: The application name.
     :arg string short_name: The slug application name.
@@ -70,9 +70,9 @@ def create_app(api_url , api_key, name=None, short_name=None, description=None):
     :rtype: integer
     """
     print('Creating app')
-    name = u'Flickr Person PHinder' # Name with a typo
-    short_name = u'flickrperson'
-    description = u'Do you see a human in this photo?'
+    name = u'Flickr Person Aging' # Name with a typo
+    short_name = u'aging'
+    description = u'How old you think this person is?'
     # JSON Blob to present the tasks for this app to the users
     # First we read the template:
     file = open('template.html')
@@ -102,7 +102,7 @@ def create_app(api_url , api_key, name=None, short_name=None, description=None):
         print("Done!")
         print("Ooooops! the name of the application has a typo!")
         print("Updating it!")
-        if (update_app(api_url, api_key, output['id'], "Flickr Person Finder")): 
+        if (update_app(api_url, api_key, output['id'], "Flickr Aging")): 
             print "Application name fixed!"
             return output['id']
         else:
@@ -146,7 +146,7 @@ def get_flickr_photos(size="big"):
     """
     # Get the ID of the photos and load it in the output var
     print('Contacting Flickr for photos')
-    query = "http://api.flickr.com/services/feeds/photos_public.gne?nojsoncallback=1&format=json"
+    query = "http://api.flickr.com/services/feeds/photos_public.gne?format=json&id=32985084@N00&lang=en-us&format=rss_200&tags=lccs2&nojsoncallback=1&format=json"
     urlobj = urllib2.urlopen(query)
     data = urlobj.read()
     urlobj.close()
