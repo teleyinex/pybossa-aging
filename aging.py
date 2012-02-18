@@ -70,9 +70,9 @@ def create_app(api_url , api_key, name=None, short_name=None, description=None):
     :rtype: integer
     """
     print('Creating app')
-    name = u'Flickr Person Aging' # Name with a typo
-    short_name = u'aging'
-    description = u'How old you think this person is?'
+    name = u'Guess my age' # Name with a typo
+    short_name = u'gma'
+    description = u'Guess my age!'
     # JSON Blob to present the tasks for this app to the users
     # First we read the template:
     file = open('template.html')
@@ -102,7 +102,7 @@ def create_app(api_url , api_key, name=None, short_name=None, description=None):
         print("Done!")
         print("Ooooops! the name of the application has a typo!")
         print("Updating it!")
-        if (update_app(api_url, api_key, output['id'], "Flickr Aging")): 
+        if (update_app(api_url, api_key, output['id'], "Guess my age")): 
             print "Application name fixed!"
             return output['id']
         else:
